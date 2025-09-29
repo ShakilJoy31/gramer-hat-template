@@ -3,8 +3,6 @@
 import { CardItemProps } from "@/types/product/productCardTypes";
 import React from "react";
 
-
-
 export const CardItem: React.FC<CardItemProps> = ({
   children,
   className,
@@ -14,15 +12,12 @@ export const CardItem: React.FC<CardItemProps> = ({
   target,
   ...props
 }) => {
-  
-
   if (Component === "a") {
     return (
       <a
         href={href}
         target={target}
         className={className}
-        
         onClick={onClick}
         {...props}
       >
@@ -33,12 +28,7 @@ export const CardItem: React.FC<CardItemProps> = ({
 
   if (Component === "button") {
     return (
-      <button
-        className={className}
-        
-        onClick={onClick}
-        {...props}
-      >
+      <button className={className} onClick={onClick} {...props}>
         {children}
       </button>
     );

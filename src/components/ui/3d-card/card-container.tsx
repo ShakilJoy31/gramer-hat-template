@@ -9,9 +9,5 @@ export const CardContainer = ({
   children: React.ReactNode;
   className?: string;
 }) => {
-  return (
-    <div className={className} style={{ perspective: "1000px" }}>
-      {children}
-    </div>
-  );
+  return <div className={className}>{children}</div>;
 };

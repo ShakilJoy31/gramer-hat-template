@@ -1,6 +1,6 @@
 import CartFlotingButton from "@/components/Cart/CartFlotingButton";
 import Footer from "@/components/navigations/Footer";
-import PublicNav from "@/components/navigations/PublicNav";
+import Navbar from "@/components/navigations/Navbar";
 import WishlistFloatingButton from "@/components/Wishlist/WishlistFlotingButton";
 
 export default function MainLayout({
@@ -10,7 +10,7 @@ export default function MainLayout({
 }) {
   return (
     <>
-      <PublicNav />
+      <Navbar />
       <div>{children}</div>
       <Footer></Footer>
       <CartFlotingButton />

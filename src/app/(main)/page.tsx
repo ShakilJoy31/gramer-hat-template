@@ -1,11 +1,10 @@
 // app/page.tsx
 import HomeBanner from "@/components/Home/Banner";
 import CategorySection from "@/components/Home/CategorySection";
+import DeliveryBanner from "@/components/Home/DeliveryBanner";
 import NewProduct from "@/components/Home/NewProduct";
-import NewsletterSection from "@/components/Home/NewsletterSection";
 import OfferProducts from "@/components/Home/OfferedProducts";
 import TopSoldProducts from "@/components/Home/TopSoldProduct";
-import WhyUs from "@/components/Home/WhyUs";
 import { generateDynamicMetadata } from "@/metadata/generateMetadata";
 import { getAllCategories, getProductsByCategory, getProductsData } from "@/utils/helper/dataFetcher";
 
@@ -59,8 +58,7 @@ const Home = async ({ searchParams }: HomeProps) => {
         categoryProducts={categoryProducts}
         defaultCategory={category}
       />
-      <WhyUs></WhyUs>
-      <NewsletterSection></NewsletterSection>
+      <DeliveryBanner></DeliveryBanner>
     </div>
   )
 }
