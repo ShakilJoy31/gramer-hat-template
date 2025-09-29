@@ -32,5 +32,5 @@ export const appConfiguration: IConfigurationProps = {
 // http://localhost:3000
 
 // Production Url........
-// https://e-commerce-template-olive-seven.vercel.app
-export const baseUrl = 'http://localhost:3000';
+// https://gramer-haat-3zpk.vercel.app
+export const baseUrl = 'https://gramer-haat-3zpk.vercel.app';
