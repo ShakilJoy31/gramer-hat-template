@@ -1,14 +1,19 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiSearch, FiShoppingCart, FiBell, FiMenu, FiX, FiUser, FiHeart, FiChevronDown } from "react-icons/fi";
+import { FiSearch, FiShoppingCart, FiMenu, FiX, FiUser, FiHeart, FiChevronDown } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { FaLeaf } from "react-icons/fa";
+import { useCart } from "@/hooks/CartContext";
+import Button from "../reusable-components/Button";
+import { useWishlist } from "@/hooks/WishlistContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
+  const { totalItems } = useCart();
+  const { totalItems: wishlistTotalItem } = useWishlist();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,8 +26,8 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Categories", href: "#", hasDropdown: true },
-    { name: "Shop", href: "/shop" },
-    { name: "About Us", href: "/about" },
+    { name: "Shop", href: "/products" },
+    { name: "About Us", href: "/about-us" },
     { name: "Contact", href: "/contact" },
     { name: "Offers", href: "/offers", isHighlighted: true },
   ];
@@ -63,7 +68,7 @@ export default function Navbar() {
       {/* Main Navigation */}
       <div className="border-b border-gray-100">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-3">
+          <div className="flex items-center justify-between py-1">
             {/* Logo */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -100,28 +105,25 @@ export default function Navbar() {
             {/* Action Icons */}
             <div className="flex items-center space-x-4">
               {/* Wishlist */}
-              <button className="hidden sm:flex items-center space-x-1 text-gray-700 hover:text-green-600 transition-colors duration-200 p-2">
+              <Button className="relative flex items-center space-x-1 text-gray-700 hover:text-green-600 transition-colors duration-200 p-2">
                 <FiHeart className="text-xl" />
                 <span className="text-sm hidden lg:inline">Wishlist</span>
-              </button>
+                <span className={`absolute -top-1 -right-1 ${wishlistTotalItem === 0 ? '' : 'bg-red-500'}  text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium`}>
+                  {wishlistTotalItem === 0 ? 2 : wishlistTotalItem}
+                </span>
+              </Button>
 
               {/* Cart */}
-              <button className="relative flex items-center space-x-1 text-gray-700 hover:text-green-600 transition-colors duration-200 p-2">
+              <Button onClick={()=> router.push('/cart')} className="relative flex hover:cursor-pointer items-center space-x-1 text-gray-700 hover:text-green-600 transition-colors duration-200 p-2">
                 <FiShoppingCart className="text-xl" />
                 <span className="text-sm hidden lg:inline">Cart</span>
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
-                  3
+                <span className={`absolute -top-1 -right-1 ${totalItems === 0 ? '' : 'bg-red-500'}  text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium`}>
+                  {totalItems === 0 ? '' : totalItems}
                 </span>
-              </button>
-
-              {/* Notification */}
-              <button className="relative hidden sm:flex items-center space-x-1 text-gray-700 hover:text-green-600 transition-colors duration-200 p-2">
-                <FiBell className="text-xl" />
-                <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full w-2 h-2"></span>
-              </button>
+              </Button>
 
               {/* Profile */}
-              <button className="flex items-center space-x-2 text-gray-700 hover:text-green-600 transition-colors duration-200 p-2">
+              <button className="flex items-center space-x-2 text-gray-700 hover:text-green-600 transition-colors duration-200">
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
                   <FiUser className="text-white text-sm" />
                 </div>
@@ -131,7 +133,7 @@ export default function Navbar() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                className="lg:hidden rounded-lg hover:bg-gray-100 transition-colors duration-200"
               >
                 {isMenuOpen ? <FiX className="text-2xl" /> : <FiMenu className="text-2xl" />}
               </button>
@@ -144,9 +146,9 @@ export default function Navbar() {
               <input
                 type="text"
                 placeholder="Search products..."
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all duration-300 bg-gray-50"
+                className="w-full px-4 py-1 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all duration-300 bg-gray-50"
               />
-              <FiSearch className="absolute right-3 top-3 text-gray-400" />
+              <FiSearch className="absolute right-3 top-2 text-gray-400" />
             </div>
           </div>
         </div>
@@ -156,7 +158,7 @@ export default function Navbar() {
       <nav className="border-b border-gray-100 bg-white">
         <div className="container mx-auto px-4">
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center justify-between py-3">
+          <div className="hidden lg:flex items-center justify-between py-1">
             <div className="flex items-center space-x-8">
               {navLinks.map((link, index) => (
                 <a

@@ -144,7 +144,7 @@ const WishlistTable: React.FC<WishlistTableProps> = ({ onClear }) => {
 
   return (
     <>
-      <div className="w-full max-w-[1280px] mt-8 mx-auto px-4">
+      <div className="w-full container mx-auto px-4">
         {/* Use the reusable Table component */}
         {items.length === 0 ? (
           <div className="overflow-x-auto border rounded-lg shadow-sm bg-white dark:bg-gray-800 p-8 text-center">
@@ -198,9 +198,9 @@ export default function WishlistComponent() {
   const { clearWishlist, items } = useWishlist();
 
   return (
-    <section className="relative w-full min-h-screen flex items-start justify-center py-12 bg-gray-50 dark:bg-gray-900">
+    <section className="relative w-full min-h-screen flex items-start justify-center py-4 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <div className="text-center my-8">
+        <div className="text-center my-4">
           <Heading className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Your Wishlist
           </Heading>

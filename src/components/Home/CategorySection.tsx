@@ -137,11 +137,11 @@ export default function CategorySection({
             <span className="text-green-800 font-bold text-sm uppercase tracking-wider">100% Organic & Fresh</span>
           </motion.div>
           
-          <Heading className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 mb-6 leading-tight">
+          <Heading className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 mb-6 leading-tight">
             Farm to Table
           </Heading>
           
-          <Paragraph className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <Paragraph className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Discover the purest organic produce, harvested at peak freshness and delivered directly from our sustainable farms to nourish your family
           </Paragraph>
         </motion.div>
@@ -155,21 +155,21 @@ export default function CategorySection({
           className="relative mb-16"
         >
           <div className="flex items-center justify-between mb-6">
-            <button
+            <Button
               onClick={() => scrollCategories('left')}
               className="p-3 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg border border-green-200 hover:shadow-xl transition-all duration-300 hover:scale-110"
             >
               <ChevronLeft className="w-6 h-6 text-green-600" />
-            </button>
+            </Button>
             
-            <h3 className="text-2xl font-bold text-green-800">Browse Categories</h3>
+            <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-green-800">Browse Categories</h3>
             
-            <button
+            <Button
               onClick={() => scrollCategories('right')}
               className="p-3 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg border border-green-200 hover:shadow-xl transition-all duration-300 hover:scale-110"
             >
               <ChevronRight className="w-6 h-6 text-green-600" />
-            </button>
+            </Button>
           </div>
 
           <div
@@ -189,7 +189,7 @@ export default function CategorySection({
                   activeCategory === cat.name ? '' : ''
                 }`}
               >
-                <div className={`w-32 h-32 rounded-3xl p-1 transition-all duration-500 ${
+                <div className={`w-24 h-20 rounded-3xl p-1 transition-all duration-500 ${
                   activeCategory === cat.name 
                     ? 'bg-gradient-to-br from-green-400 to-emerald-500 shadow-2xl' 
                     : 'bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl'
@@ -244,21 +244,21 @@ export default function CategorySection({
                       src={selectedProduct.imageUrl[0] || "/placeholder.jpg"}
                       alt={selectedProduct.name}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-contain transition-transform duration-700 group-hover:scale-110"
                     />
                     
                     {/* Organic Certification Overlay */}
-                    <div className="absolute top-6 left-6">
-                      <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                    <div className="absolute top-2 left-2">
+                      <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-2 py-1 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
                         <FaLeaf className="text-white" />
                         CERTIFIED ORGANIC
                       </div>
                     </div>
 
                     {/* Floating Price Tag */}
-                    <div className="absolute top-6 right-6">
-                      <div className="bg-gradient-to-r from-amber-400 to-orange-500 text-white px-4 py-3 rounded-2xl shadow-2xl">
-                        <div className="text-2xl font-black">${selectedProduct.price}</div>
+                    <div className="absolute top-0 right-0">
+                      <div className="bg-gradient-to-r from-amber-400 to-orange-500 text-white px-4 py-1 rounded-2xl shadow-2xl">
+                        <div className="text-md md:text-2xl font-black">${selectedProduct.price}</div>
                         {selectedProduct.originalPrice && (
                           <div className="text-xs line-through opacity-80">${selectedProduct.originalPrice}</div>
                         )}
@@ -270,7 +270,7 @@ export default function CategorySection({
                   <div className="p-8">
                     <div className="flex items-start justify-between mb-4">
                       <div>
-                        <Heading className="text-3xl font-black text-gray-900 mb-2">
+                        <Heading className="text-lg md:text-xl lg:text-3xl font-black text-gray-900 mb-2">
                           {selectedProduct.name}
                         </Heading>
                         <Paragraph className="text-gray-600 text-lg leading-relaxed">
@@ -297,7 +297,10 @@ export default function CategorySection({
                         </div>
                       </div>
 
-                      <div className="flex gap-3">
+                     
+                    </div>
+
+                     <div className="gap-3 relative flex gap-x-2 mt-2 ">
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
@@ -345,7 +348,8 @@ export default function CategorySection({
                           </AnimatePresence>
                         </motion.button>
                       </div>
-                    </div>
+
+
                   </div>
                 </div>
               </div>
@@ -378,7 +382,7 @@ export default function CategorySection({
                       src={product.imageUrl[0] || "/placeholder.jpg"}
                       alt={product.name}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="object-contain transition-transform duration-500 group-hover:scale-110"
                     />
                     
                     {/* Overlay Gradient */}
@@ -491,17 +495,16 @@ export default function CategorySection({
               }}></div>
             </div>
             
-            <Heading className="text-4xl font-black text-white mb-4">
+            <Heading className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-4">
               Ready to Taste the Difference?
             </Heading>
-            <Paragraph className="text-green-100 text-xl mb-8 max-w-2xl mx-auto">
+            <Paragraph className="text-green-100 text-md md:text-lg lg:text-xl mb-8 max-w-2xl mx-auto">
               Join thousands of families who have transformed their health with our farm-fresh organic produce
             </Paragraph>
             
             <Button 
               onClick={() => router.push('/products')}
-              className="bg-white text-green-600 hover:bg-green-50 hover:cursor-pointer px-8 py-4 rounded-2xl font-black text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
-            >
+              className="bg-white text-green-600 hover:bg-green-50 hover:cursor-pointer px-6 py-3 w-full md:w-auto rounded-2xl font-black text-md lg:text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
               Explore All Products
             </Button>
           </div>

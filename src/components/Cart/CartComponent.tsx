@@ -143,7 +143,7 @@ const CartTable: React.FC<CartTableProps> = ({ onClear, onCheckout }) => {
 
   return (
     <>
-      <div className="w-full max-w-7xl mt-8 mx-auto px-4">
+      <div className="w-full container mt-4 mx-auto px-4">
         {/* Use the reusable Table component */}
         {items.length === 0 ? (
           <div className="overflow-x-auto border rounded-lg shadow-sm bg-white dark:bg-gray-800 p-8 text-center">

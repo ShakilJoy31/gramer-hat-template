@@ -8,6 +8,7 @@ import productImage from "../../../public/product2.jpg";
 import Button from "../reusable-components/Button";
 import productImage2 from "../../../public/380.jpg";
 import Image from "next/image";
+import { singleProductShadow } from "@/utils/constant/colorConstant";
 
 interface ProductGalleryProps {
   product: Product;
@@ -51,7 +52,7 @@ export default function ProductGallery({ product }: ProductGalleryProps) {
     <div className="space-y-4">
       {/* Main Image Container with Hover Zoom */}
       <div
-        className="relative aspect-square overflow-hidden rounded-lg shadow-[0_0_25px_rgba(16,185,129,0.4),0_0_50px_rgba(5,150,105,0.3),0_0_75px_rgba(4,120,87,0.2),0_0_100px_rgba(6,95,70,0.1)] dark:bg-gray-800"
+        className={`relative aspect-square overflow-hidden rounded-lg ${singleProductShadow} dark:bg-gray-800`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onMouseMove={handleMouseMove}
