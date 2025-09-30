@@ -54,7 +54,7 @@ export default function CartFloatingButton() {
     >
       <Button
         onClick={toggleCollapse}
-        className={`absolute left-6 z-60 top-5 -translate-y-1/2 -translate-x-8 bg-green-700 text-white p-2 rounded-l-lg shadow-lg transition-all duration-300 ease-in-out hover:bg-green-800 ${isCollapsed ? 'opacity-100' : 'opacity-100'
+        className={`absolute hover:cursor-pointer left-6 z-60 top-5 -translate-y-1/2 -translate-x-8 bg-green-700 text-white p-2 rounded-l-lg shadow-lg transition-all duration-300 ease-in-out hover:bg-green-800 ${isCollapsed ? 'opacity-100' : 'opacity-100'
           }`}
       >
         {isCollapsed ? (

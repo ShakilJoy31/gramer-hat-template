@@ -16,7 +16,7 @@ export default function PolicyTabs() {
     }
 
     return (
-        <section className="max-w-7xl mx-auto px-6 py-24">
+        <section className="container mx-auto px-6 py-4">
             <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8 items-start">
 
                 {/* Mobile segmented control */}
@@ -44,7 +44,7 @@ export default function PolicyTabs() {
 
                 {/* Desktop sidebar */}
                 <aside
-                    className="hidden md:block rounded-lg border border-gray-300 p-6 h-min bg-white shadow-sm sticky top-24 self-start"
+                    className="hidden md:block rounded-lg border border-gray-300 p-6 h-min bg-white shadow-sm sticky top-36 self-start"
                     aria-label="Policy Navigation"
                 >
                     <ul className="space-y-4">

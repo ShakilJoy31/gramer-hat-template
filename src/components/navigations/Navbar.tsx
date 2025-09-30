@@ -7,6 +7,7 @@ import { FaLeaf } from "react-icons/fa";
 import { useCart } from "@/hooks/CartContext";
 import Button from "../reusable-components/Button";
 import { useWishlist } from "@/hooks/WishlistContext";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,15 +47,15 @@ export default function Navbar() {
 
           <div className="flex items-center space-x-6 text-sm">
             <div className="flex items-center space-x-4">
-              <a href="#" className="hover:text-green-400 transition-colors duration-200">
+              <Link href="/about-us" className="hover:text-green-400 transition-colors duration-200">
                 About Us
-              </a>
-              <a href="#" className="hover:text-green-400 transition-colors duration-200">
+              </Link>
+              <Link href="/contact" className="hover:text-green-400 transition-colors duration-200">
                 Contact Us
-              </a>
-              <a href="#" className="hover:text-green-400 transition-colors duration-200">
+              </Link>
+              <Link href="/" className="hover:text-green-400 transition-colors duration-200">
                 My Account
-              </a>
+              </Link>
             </div>
             <div className="h-4 w-px bg-gray-600"></div>
             <div className="flex items-center space-x-2">
@@ -181,9 +182,9 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center space-x-6 text-xs text-gray-500">
-              <a href="#" className="hover:text-gray-700 transition-colors duration-200">
+              <Link href="/terms-and-condition" className="hover:underline hover:text-green-500 transition-colors duration-200">
                 Privacy Policy
-              </a>
+              </Link>
               <a href="#" className="hover:text-gray-700 transition-colors duration-200">
                 Terms & Conditions
               </a>

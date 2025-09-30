@@ -50,13 +50,10 @@ export default function WishlistFloatingButton() {
   return (
     <div
       className={`fixed bottom-1/2 left-0 z-50 transition-all duration-300 ease-in-out ${isCollapsed ? '-translate-x-36' : 'translate-x-0'
-        }`}
-    >
-      {/* Toggle Button for Mobile */}
-
+        }`}>
       <Button
         onClick={toggleCollapse}
-        className={`absolute right-6 z-60 top-5 -translate-y-1/2 translate-x-8 bg-pink-600 text-white p-2 rounded-r-lg shadow-lg transition-all duration-300 ease-in-out hover:bg-pink-700 ${isCollapsed ? 'opacity-100' : 'opacity-100'
+        className={`absolute hover:cursor-pointer right-6 z-60 top-5 -translate-y-1/2 translate-x-8 bg-pink-600 text-white p-2 rounded-r-lg shadow-lg transition-all duration-300 ease-in-out hover:bg-pink-700 ${isCollapsed ? 'opacity-100' : 'opacity-100'
           }`}
       >
         {isCollapsed ? (

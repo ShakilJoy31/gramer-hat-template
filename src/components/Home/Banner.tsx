@@ -13,9 +13,22 @@ import "swiper/css/effect-fade";
 import banner1 from "../../../public/Product-image/onion.png";
 import banner2 from "../../../public/Product-image/Strawberrie.png";
 import banner3 from "../../../public/Product-image/Kale-Sprouts.png";
+import banner4 from "../../../public/Product-image/carrots.png";
+
 
 export default function Banner() {
   const slides = [
+    {
+      id: 1,
+      title: "Fresh Organic Carrots",
+      subtitle: "Vine-Ripened Perfection",
+      desc: "Juicy, sun-kissed tomatoes bursting with flavor, harvested at perfect ripeness from our organic farms",
+      img: banner4,
+      bgGradient: "from-red-500 to-rose-600",
+      textColor: "text-white",
+      buttonStyle: "bg-white text-red-600 hover:bg-red-50",
+      badge: "Farm Fresh"
+    },
     {
       id: 1,
       title: "Farm Fresh Organic Vegetables",
@@ -91,10 +104,10 @@ export default function Banner() {
                     return `<span class="${className} !w-3 !h-3 !bg-white/80 !mx-1 !rounded-full !transition-all !duration-300 hover:!scale-125"></span>`;
                   },
                 }}
-                autoplay={{ 
-                  delay: 5000, 
+                autoplay={{
+                  delay: 5000,
                   disableOnInteraction: false,
-                  pauseOnMouseEnter: true 
+                  pauseOnMouseEnter: true
                 }}
                 modules={[Pagination, Autoplay, EffectFade]}
                 className="hero-swiper"
@@ -104,7 +117,7 @@ export default function Banner() {
                     <div className={`relative min-h-[850px] lg:min-h-[600px] bg-gradient-to-br ${slide.bgGradient}`}>
                       {/* Content */}
                       <div className="absolute inset-0 z-10 flex items-center">
-                        <div className="container mx-auto px-8">
+                        <div className="container mx-auto px-4 md:px-6 lg:px-8 ">
                           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                             {/* Text Content */}
                             <motion.div
@@ -156,10 +169,10 @@ export default function Banner() {
                                 src={slide.img}
                                 alt={slide.title}
                                 fill
-                                className="object-contain drop-shadow-2xl"
+                                className="object-cover drop-shadow-2xl w-full"
                                 priority
                               />
-                              
+
                               {/* Floating Elements */}
                               <div className="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center shadow-2xl">
                                 <FaStar className="text-white text-2xl" />
@@ -196,7 +209,7 @@ export default function Banner() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="space-y-6"
           >
-            
+
 
             {/* Premium Coupon 1 */}
             <motion.div
@@ -227,7 +240,7 @@ export default function Banner() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center justify-between">
                   <span className="text-amber-100 text-sm">Min. spend $200</span>
                   <motion.button
@@ -272,7 +285,7 @@ export default function Banner() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center justify-between">
                   <span className="text-green-100 text-sm">Min. spend $100</span>
                   <motion.button
@@ -360,19 +373,19 @@ export default function Banner() {
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div className="text-white">
-                <h3 className="text-4xl font-black mb-4">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4">
                   Start Your Healthy Journey Today
                 </h3>
-                <p className="text-emerald-100 text-lg leading-relaxed">
+                <p className="text-emerald-100 text-md md:text-lg leading-relaxed">
                   Join thousands of families who trust us for the freshest, most nutritious organic produce delivered to their doorstep
                 </p>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-end">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-emerald-600 hover:bg-emerald-50 px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center gap-3 justify-center"
+                  className="bg-white text-emerald-600 hover:bg-emerald-50 px-4 py-2 rounded-2xl font-bold text-md md:text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center gap-3 justify-center"
                 >
                   Browse Products
                   <FaArrowRight />
@@ -380,7 +393,7 @@ export default function Banner() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300"
+                  className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-4 py-2 rounded-2xl font-bold text-lg transition-all duration-300"
                 >
                   Learn More
                 </motion.button>
