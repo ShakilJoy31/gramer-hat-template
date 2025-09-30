@@ -1,152 +1,201 @@
-import { FaTelegramPlane, FaWhatsapp, FaInstagram, FaFacebookF, FaPhoneAlt } from "react-icons/fa";
-import { MdLocationOn, MdEmail, MdPayment } from "react-icons/md";
-import Image from "next/image";
-import siteLogo from "../../../public/demo_logo_footer.png";
+import { FaLeaf, FaInstagram, FaFacebookF, FaTwitter, FaPinterestP } from "react-icons/fa";
+import { MdLocationOn, MdEmail, MdLocalShipping } from "react-icons/md";
+import { IoIosLeaf } from "react-icons/io";
+import { GiFruitBowl } from "react-icons/gi";
 import Paragraph from "../reusable-components/Paragraph";
 import Heading from "../reusable-components/Heading";
 import Link from "next/link";
-import { footerSvg } from "@/utils/constant/footerWaveSvg";
 import Button from "../reusable-components/Button";
 import InputField from "../ui/input";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-[#0099FF] to-black text-gray-300 relative">
-      {footerSvg}
+    <footer className="bg-gradient-to-b from-emerald-50 to-emerald-900 text-gray-800 relative overflow-hidden">
+      {/* Organic Pattern Background */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-10 left-10">
+          <IoIosLeaf className="text-6xl text-emerald-600" />
+        </div>
+        <div className="absolute top-20 right-20">
+          <GiFruitBowl className="text-5xl text-emerald-500" />
+        </div>
+        <div className="absolute bottom-20 left-1/4">
+          <FaLeaf className="text-4xl text-emerald-400" />
+        </div>
+      </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 pt-10 pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 pt-16 pb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+        
         {/* Company Info */}
         <div className="lg:col-span-1">
-          <div className="mb-4">
-            <Image
-              src={siteLogo}
-              alt="E-Shop Logo"
-              width={160}
-              height={60}
-              className="w-72 h-28 object-contain"
-            />
-          </div>
-          <Paragraph className="text-sm mb-4">
-            Your one-stop destination for quality products at affordable prices. We offer the best shopping experience with fast delivery and excellent customer service.
-          </Paragraph>
-
-          <div className="flex items-start gap-2 mb-3">
-            <MdLocationOn className="text-blue-400 text-lg mt-0.5 flex-shrink-0" />
-            <Paragraph className="text-sm">
-              123 Commerce Street, Shopping District, City Center, 10001
+          <div className="mb-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="bg-emerald-600 p-2 rounded-full">
+                <FaLeaf className="text-white text-2xl" />
+              </div>
+              <Heading className="font-bold text-2xl text-emerald-800">Gramer Hat</Heading>
+            </div>
+            <Paragraph className="text-sm mb-6 text-gray-600 leading-relaxed">
+              Nourishing lives with 100% organic, farm-fresh produce delivered straight to your doorstep. 
+              We believe in sustainable farming and healthy living for all.
             </Paragraph>
           </div>
 
-          <div className="flex items-center gap-2 mb-3">
-            <FaPhoneAlt className="text-blue-400 text-lg flex-shrink-0" />
-            <Paragraph className="text-sm">+1 (555) 123-4567</Paragraph>
-          </div>
+          <div className="space-y-4">
+            <div className="flex items-start gap-3">
+              <MdLocationOn className="text-emerald-600 text-xl mt-0.5 flex-shrink-0" />
+              <Paragraph className="text-sm text-gray-700">
+                123 Green Valley Road,<br />
+                Organic Farming District,<br />
+                Fresh City, 10001
+              </Paragraph>
+            </div>
 
-          <div className="flex items-center gap-2 mb-6">
-            <MdEmail className="text-blue-400 text-lg flex-shrink-0" />
-            <Paragraph className="text-sm">support@eshop.com</Paragraph>
+            <div className="flex items-center gap-3">
+              <MdEmail className="text-emerald-600 text-xl flex-shrink-0" />
+              <Paragraph className="text-sm text-gray-700">hello@organicharvest.com</Paragraph>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <MdLocalShipping className="text-emerald-600 text-xl flex-shrink-0" />
+              <Paragraph className="text-sm text-gray-700">Free delivery on orders over $50</Paragraph>
+            </div>
           </div>
 
           {/* Social Icons */}
-          <div className="flex gap-3">
-            <Link href="#" className="bg-blue-600 hover:bg-blue-500 duration-200 text-white p-2 rounded-full text-sm">
-              <FaFacebookF />
-            </Link>
-            <Link href="#" className="bg-blue-600 hover:bg-blue-500 duration-200 text-white p-2 rounded-full text-sm">
-              <FaInstagram />
-            </Link>
-            <Link href="#" className="bg-blue-600 hover:bg-blue-500 duration-200 text-white p-2 rounded-full text-sm">
-              <FaWhatsapp />
-            </Link>
-            <Link href="#" className="bg-blue-600 hover:bg-blue-500 duration-200 text-white p-2 rounded-full text-sm">
-              <FaTelegramPlane />
-            </Link>
+          <div className="flex gap-3 mt-6">
+            {[
+              { icon: <FaInstagram />, color: "bg-pink-500 hover:bg-pink-600" },
+              { icon: <FaFacebookF />, color: "bg-blue-600 hover:bg-blue-700" },
+              { icon: <FaTwitter />, color: "bg-sky-500 hover:bg-sky-600" },
+              { icon: <FaPinterestP />, color: "bg-red-600 hover:bg-red-700" }
+            ].map((social, index) => (
+              <Link 
+                key={index} 
+                href="#" 
+                className={`${social.color} duration-300 text-white p-3 rounded-full text-sm transform hover:scale-110 transition-all shadow-lg`}
+              >
+                {social.icon}
+              </Link>
+            ))}
           </div>
         </div>
 
-        {/* Shop Categories */}
+        {/* Organic Categories */}
         <div>
-          <Heading className="font-bold mb-4 text-white text-lg">Shop Categories</Heading>
-          <ul className="space-y-2 text-sm">
+          <Heading className="font-bold mb-6 text-emerald-800 text-lg border-l-4 border-emerald-500 pl-3">
+            Fresh Categories
+          </Heading>
+          <ul className="space-y-3">
             {[
-              "Electronics",
-              "Fashion",
-              "Home & Kitchen",
-              "Beauty & Health",
-              "Sports & Fitness",
-              "Books & Stationery",
-              "Toys & Games",
-              "Food & Grocery"
+              "Fresh Vegetables",
+              "Organic Fruits",
+              "Dairy & Eggs",
+              "Grains & Pulses",
+              "Herbs & Spices",
+              "Plant-Based Foods",
+              "Cold-Pressed Oils",
+              "Raw Honey & Syrups"
             ].map((item, index) => (
-              <li key={index} className="hover:text-blue-400 cursor-pointer transition-colors">{item}</li>
+              <li key={index} className="group">
+                <span className="text-sm text-gray-700 hover:text-white cursor-pointer duration-200 flex items-center gap-2 group-hover:translate-x-1 transform transition-transform">
+                  <FaLeaf className="text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {item}
+                </span>
+              </li>
             ))}
           </ul>
         </div>
 
         {/* Customer Service */}
         <div>
-          <Heading className="font-bold mb-4 text-white text-lg">Customer Service</Heading>
-          <ul className="space-y-2 text-sm">
+          <Heading className="font-bold mb-6 text-emerald-800 text-lg border-l-4 border-emerald-500 pl-3">
+            Support
+          </Heading>
+          <ul className="space-y-3">
             {[
-              "Contact Us",
-              "FAQs",
-              "Shipping Information",
-              "Returns & Exchanges",
-              "Track Order",
-              "Size Guide",
-              "Gift Cards",
-              "Wishlist"
+              "Contact Farmer",
+              "Delivery Info",
+              "Returns & Refunds",
+              "Quality Promise",
+              "Recipe Guides",
+              "Subscription Plans",
+              "Farm Visits",
+              "Sustainability"
             ].map((item, index) => (
-              <li key={index} className="hover:text-blue-400 cursor-pointer transition-colors">{item}</li>
+              <li key={index} className="group">
+                <span className="text-sm text-gray-700 hover:text-white cursor-pointer duration-200 flex items-center gap-2 group-hover:translate-x-1 transform transition-transform">
+                  <FaLeaf className="text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {item}
+                </span>
+              </li>
             ))}
           </ul>
         </div>
 
         {/* Newsletter */}
         <div>
-          <Heading className="font-bold mb-4 text-white text-lg">Newsletter</Heading>
-          <Paragraph className="text-sm mb-4">
-            Subscribe to our newsletter for special offers and updates
+          <Heading className="font-bold mb-6 text-emerald-800 text-lg border-l-4 border-emerald-500 pl-3">
+            Join Our Community
+          </Heading>
+          <Paragraph className="text-sm mb-6 text-gray-600">
+            Get weekly recipes, farming updates, and exclusive offers delivered fresh to your inbox.
           </Paragraph>
-          <div className="flex flex-col gap-3">
+          
+          <div className="flex flex-col gap-4">
             <InputField
               name="email"
               type="email"
-              placeholder="Email"
-              icon={<MdEmail className="h-5 w-5 text-gray-400" />}
-              className="border border-cyan-500 rounded pl-10 pr-3 py-1.5 w-full focus:outline-none"
+              placeholder="Your email address"
+              icon={<MdEmail className="h-5 w-5 text-emerald-600" />}
+              className="border-2 border-emerald-200 rounded-lg pl-12 pr-4 py-3 w-full focus:outline-none focus:border-emerald-500 bg-white shadow-sm transition-colors"
             />
-            <Button className="bg-gradient-to-r hover:cursor-pointer from-cyan-600 to-blue-700 hover:bg-blue-500 text-white py-2 rounded text-sm font-medium transition-colors">
-              Subscribe
+            <Button className="bg-gradient-to-r hover:cursor-pointer from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 text-white py-3 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+              Subscribe to Newsletter
             </Button>
           </div>
 
-          <div className="mt-6">
-            <Heading className="font-bold mb-3 text-white text-sm">Payment Methods</Heading>
-            <div className="flex gap-2">
-              <MdPayment className="text-2xl bg-white p-1 rounded" />
-              <Paragraph className="bg-white p-1 rounded text-xs font-bold px-2 text-gray-800 ">VISA</Paragraph>
-              <Paragraph className="bg-white p-1 rounded text-xs font-bold px-2 text-gray-800 ">MC</Paragraph>
-              <Paragraph className="bg-white p-1 rounded text-xs font-bold px-2 text-gray-800 ">AMEX</Paragraph>
-              <Paragraph className="bg-white p-1 rounded text-xs font-bold px-2 text-gray-800 ">PP</Paragraph>
+          {/* Organic Certifications */}
+          <div className="mt-8 p-4 bg-emerald-50 rounded-lg border border-emerald-200">
+            <Heading className="font-bold mb-3 text-emerald-800 text-sm">Certified Organic</Heading>
+            <div className="flex flex-wrap gap-2">
+              {["USDA Organic", "EU Organic", "Non-GMO", "Soil Association"].map((cert, index) => (
+                <span 
+                  key={index}
+                  className="bg-white px-3 py-1 rounded-full text-xs font-medium text-emerald-700 border border-emerald-300 shadow-sm"
+                >
+                  {cert}
+                </span>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="h-[1px] w-full bg-[#0099FF] "></div>
-      <div className="container mx-auto mt-6 pb-4 flex flex-col md:flex-row justify-between items-center px-4">
-        <Paragraph className="text-xs text-gray-500 mb-2 md:mb-0">
-          © 2023 E-Shop. All Rights Reserved.
-        </Paragraph>
-        <div className="flex gap-4">
-          <span className=" cursor-pointer text-xs text-gray-500 hover:text-gray-300 transition-colors">Privacy Policy</span>
-          <span className="text-gray-600">|</span>
-          <span className=" cursor-pointer text-xs text-gray-500 hover:text-gray-300 transition-colors">Terms & Conditions</span>
-          <span className="text-gray-600">|</span>
-          <span className=" cursor-pointer text-xs text-gray-500 hover:text-gray-300 transition-colors">Cookie Policy</span>
+      <div className="border-t border-emerald-200 my-4 pt-6">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+          <Paragraph className="text-sm text-white mb-4 md:mb-0 text-center md:text-left">
+            © 2024 OrganicHarvest. Cultivating health, nurturing nature. 🌱
+          </Paragraph>
+          <div className="flex flex-wrap justify-center gap-4">
+            {["Privacy Policy", "Terms of Service", "Cookie Policy", "Sustainability Pledge"].map((item, index) => (
+              <span 
+                key={index}
+                className="text-xs text-white hover:text-emerald-700 cursor-pointer transition-colors duration-200 font-medium"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Floating decorative elements */}
+      <div className="absolute bottom-10 right-10 hidden lg:block">
+        <div className="bg-emerald-100 rounded-full p-3 animate-bounce">
+          <GiFruitBowl className="text-3xl text-emerald-600" />
         </div>
       </div>
     </footer>

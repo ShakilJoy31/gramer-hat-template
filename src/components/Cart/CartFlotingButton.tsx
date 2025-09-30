@@ -1,53 +1,47 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaShoppingCart } from "react-icons/fa";
 import { useCart } from "@/hooks/CartContext";
-import Button from "../reusable-components/Button";
 import { useRouter } from "next/navigation";
+import { FaShoppingBag } from "react-icons/fa";
 
-export default function CartFlotingButton() {
-  const { totalItems, lastAddedAt } = useCart();
-  const [showDot, setShowDot] = useState(false);
+export default function CartFloatingButton() {
+  const { items, totalItems } = useCart();
   const router = useRouter();
+  const [totalPrice, setTotalPrice] = useState(0);
 
+  // calculate total price
   useEffect(() => {
-    if (lastAddedAt) {
-      setShowDot(true);
-    }
-  }, [lastAddedAt]);
+    const price = items.reduce(
+      (acc: number, item) => acc + item.price * item.quantity,
+      0
+    );
+    setTotalPrice(price);
+  }, [items]);
+
+  console.log(items)
+
+  if (totalItems === 0) return null;
 
   return (
-    <div className={`fixed bottom-6 right-6 z-50 ${totalItems === 0 ? "hidden" : ""}`}>
-      {/* Button */}
-      <Button
-        onClick={() => router.push("/cart")}
-        className="relative hover:cursor-pointer bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-105"
-        aria-label="Cart"
-      >
-        <FaShoppingCart className="text-2xl md:text-3xl lg:text-4xl " />
-        {totalItems > 0 && (
-          <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow">
-            {totalItems}
-          </span>
-        )}
+    <div
+      className="fixed bottom-1/2 right-0 z-50 cursor-pointer"
+      onClick={() => router.push("/cart")}
+    >
+      <div className="w-40 rounded-tl-md rounded-bl-md overflow-hidden shadow-lg">
+        {/* Top section */}
+        <div className="bg-blue-50 flex flex-col items-center py-4">
+          <FaShoppingBag className="text-green-600 text-2xl mb-1" />
+          <p className="text-gray-800 text-sm font-medium">{totalItems} Items</p>
+        </div>
 
-        {/* Flying dot when item added */}
-        <AnimatePresence>
-          {showDot && (
-            <motion.span
-              className="absolute w-3 h-3 bg-yellow-400 rounded-full shadow"
-              initial={{ opacity: 0.9, scale: 0.8, x: -40, y: -40 }}
-              animate={{ opacity: 1, scale: 1.6, x: 0, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              onAnimationComplete={() => setShowDot(false)}
-            />
-          )}
-        </AnimatePresence>
-      </Button>
-
+        {/* Bottom section */}
+        <div className="bg-green-700 text-center py-3">
+          <p className="text-white font-bold text-lg">
+            ${totalPrice.toFixed(2)}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

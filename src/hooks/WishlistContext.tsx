@@ -19,11 +19,11 @@ export interface Product {
 
 export interface WishlistItem extends Product {
   addedAt: number;
+  quantity: number; // Add quantity property
 }
 
 interface WishlistState {
   items: WishlistItem[];
-  /** updated on each add — handy for triggering animations in UI */
   lastAddedAt: number;
 }
 
@@ -46,7 +46,7 @@ function wishlistReducer(state: WishlistState, action: Action): WishlistState {
         return state;
       }
       
-      const items = [...state.items, { ...product, addedAt: Date.now() }];
+      const items = [...state.items, { ...product, addedAt: Date.now(), quantity: 1 }]; // Add quantity: 1
       return { items, lastAddedAt: Date.now() };
     }
     case "REMOVE_ITEM":
@@ -86,7 +86,12 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as WishlistState;
-        dispatch({ type: "HYDRATE", payload: parsed });
+        // Ensure all items have quantity property for backward compatibility
+        const itemsWithQuantity = parsed.items.map(item => ({
+          ...item,
+          quantity: item.quantity || 1
+        }));
+        dispatch({ type: "HYDRATE", payload: { ...parsed, items: itemsWithQuantity } });
       }
     } catch {}
   }, []);
@@ -109,7 +114,6 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
 
   const addToWishlistWithToast = (product: Product) => {
     if (isInWishlist(product.id)) {
-      // Product already in wishlist - show info toast
       toast('Already in wishlist!', {
         icon: '❤️',
         duration: 2000,
@@ -120,7 +124,6 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
         },
       });
     } else {
-      // New product - show success toast
       dispatch({ type: "ADD_ITEM", payload: { product } });
       toast.success(`${product.name} added to wishlist!`, {
         icon: '❤️',

@@ -1,52 +1,49 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { FaHeart } from "react-icons/fa";
 import { useWishlist } from "@/hooks/WishlistContext";
-import Button from "../reusable-components/Button";
 import { useRouter } from "next/navigation";
 
 export default function WishlistFloatingButton() {
-  const { totalItems, lastAddedAt } = useWishlist();
-  const [showDot, setShowDot] = useState(false);
+  const { items, totalItems } = useWishlist();
+  const [totalPrice, setTotalPrice] = useState(0);
   const router = useRouter();
 
+  // calculate total price
   useEffect(() => {
-    if (lastAddedAt) {
-      setShowDot(true);
-    }
-  }, [lastAddedAt]);
+    const price = items.reduce(
+      (acc: number, item) => acc + item.price * (item.quantity ?? 1),
+      0
+    );
+    setTotalPrice(price);
+  }, [items]);
+
+  console.log(items)
+
+  if (totalItems === 0) return null;
 
   return (
-    <div className={`fixed bottom-6 left-6 z-50 ${totalItems === 0 ? "hidden" : ""}`}>
-      {/* Button */}
-      <Button
-        onClick={() => router.push("/wishlist")}
-        className="relative hover:cursor-pointer bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-105"
-        aria-label="Wishlist"
-      >
-        <FaHeart className="text-2xl md:text-3xl lg:text-4xl" />
-        {totalItems > 0 && (
-          <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow">
-            {totalItems}
-          </span>
-        )}
+    <div
+      className="fixed bottom-1/2 left-0 z-50 cursor-pointer"
+      onClick={() => router.push("/wishlist")}
+    >
+      <div className="w-40 rounded-tr-md rounded-br-md overflow-hidden shadow-lg">
+        {/* Top section */}
+        <div className="bg-rose-50 flex flex-col items-center py-4">
+          <FaHeart className="text-pink-600 text-2xl mb-1" />
+          <p className="text-gray-800 text-sm font-medium">
+            {totalItems} Items
+          </p>
+        </div>
 
-        {/* Flying dot when item added */}
-        <AnimatePresence>
-          {showDot && (
-            <motion.span
-              className="absolute w-3 h-3 bg-white rounded-full shadow"
-              initial={{ opacity: 0.9, scale: 0.8, x: 40, y: -40 }}
-              animate={{ opacity: 1, scale: 1.6, x: 0, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              onAnimationComplete={() => setShowDot(false)}
-            />
-          )}
-        </AnimatePresence>
-      </Button>
+        {/* Bottom section */}
+        <div className="bg-pink-600 text-center py-3">
+          <p className="text-white font-bold text-lg">
+            ${totalPrice.toFixed(2)}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -19,7 +19,7 @@ const NewProducts: React.FC<NewProductsProps> = ({ products }) => {
             key={index}
             product={product}
             className="hover:scale-105 transition-transform"
-            imageHeight="h-64"
+            imageHeight="h-48"
             showCategory={true}
             showRating={true}
             showActions={true}

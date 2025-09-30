@@ -13,7 +13,7 @@ import Button from "../reusable-components/Button";
 const ProductCard: React.FC<ProductCardProps> = ({
   product,
   className = "",
-  imageHeight = "h-60",
+  imageHeight = "h-48",
   // showCategory = true,
   showRating = true,
   showActions = true,
@@ -62,8 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             src={product.imageUrl[0]}
             alt={product.name}
             fill
-            className="object-cover transition-transform duration-300 hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-300 hover:scale-105 "
           />
         </div>
 

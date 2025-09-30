@@ -33,7 +33,7 @@ const Home = async ({ searchParams }: HomeProps) => {
   // Get category from URL params or use default
   const category = typeof resolvedSearchParams.category === 'string'
     ? resolvedSearchParams.category
-    : "Electronics";
+    : "Vegetables";
 
   // Fetch products data on the server
   const products = await getProductsData();
