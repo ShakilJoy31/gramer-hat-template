@@ -47,7 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <div className="absolute -inset-2 rounded-[24px] bg-gradient-to-r from-[#6671AE] via-[#4584A8] to-[#76867A] blur-2xl opacity-0 group-hover:opacity-70 transition duration-500 pointer-events-none" />
 
       {/* Gradient Border */}
-      <div className="absolute inset-0 rounded-[22px] bg-gradient-to-r from-[#6671AE] via-[#4584A8] to-[#76867A]" />
+      {/* <div className="absolute inset-0 rounded-[22px] bg-gradient-to-r from-[#6671AE] via-[#4584A8] to-[#76867A]" /> */}
 
       {/* Card Content */}
       <div className="relative rounded-[20px] bg-white dark:bg-zinc-900 transition-all duration-300">
@@ -62,7 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             src={product.imageUrl[0]}
             alt={product.name}
             fill
-            className="object-cover transition-transform duration-300 hover:scale-105 "
+            className="object-contain transition-transform duration-300 hover:scale-105 "
           />
         </div>
 
@@ -82,11 +82,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
             {[...Array(5)].map((_, i) => (
               <svg
                 key={i}
-                className={`w-4 h-4 ${
-                  i < Math.floor(product.rating!)
+                className={`w-4 h-4 ${i < Math.floor(product.rating!)
                     ? "text-yellow-400"
                     : "text-gray-300"
-                }`}
+                  }`}
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -147,16 +146,25 @@ const ProductCard: React.FC<ProductCardProps> = ({
         )}
 
         {/* CTA */}
-       <div className="p-1.5 h-10">
-         {showActions && (
+        <div className=" h-10 flex gap-x-[1px]">
+
+          <Button
+             onClick={() =>
+            router.push(`/products/product-details/${product.slug}`)
+          }
+            className="w-full h-full hover:cursor-pointer rounded-bl-[22px] text-white flex items-center justify-center space-x-2 bg-gradient-to-r from-green-700 to-pink-700 text-xs font-bold hover:opacity-90 transition-colors" >
+            <span>Details</span>
+          </Button>
+
           <Button
             onClick={handleAddToCart}
-            className="w-full h-full hover:cursor-pointer rounded-[22px] text-white flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-600 to-blue-700 text-xs font-bold hover:opacity-90 transition-colors"
+            className="w-full h-full hover:cursor-pointer rounded-br-[22px] text-white flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-700 to-green-700 text-xs font-bold hover:opacity-90 transition-colors"
           >
             <span>Add to Cart</span>
           </Button>
-        )}
-       </div>
+
+        </div>
+
       </div>
     </div>
   );

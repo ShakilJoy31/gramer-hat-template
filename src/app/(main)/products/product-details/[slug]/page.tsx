@@ -43,7 +43,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   const recommendedProducts = await getRecommendedProducts(product.id, 8);
 
   return (
-    <div className="bg-[#F4F6F8] dark:bg-gray-900 min-h-screen">
+    <div className="bg-[#F4F6F8] dark:bg-gray-900 min-h-screen py-4">
       <ProductDetail product={product} recommendedProducts={recommendedProducts} />
     </div>
   );

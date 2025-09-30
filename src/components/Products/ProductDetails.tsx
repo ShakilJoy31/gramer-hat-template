@@ -15,7 +15,7 @@ interface ProductDetailProps {
 
 export default function ProductDetail({ product, recommendedProducts }: ProductDetailProps) {
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 ">
+        <div className="container bg-white mx-auto p-4 rounded-md ">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Left Column - Product Gallery */}
                 <motion.div

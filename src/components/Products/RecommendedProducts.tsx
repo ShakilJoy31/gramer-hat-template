@@ -71,13 +71,13 @@ export default function RecommendedProducts({
             >
                 <Heading
                     level={2}
-                    className="text-xl font-bold text-gray-900 dark:text-white mb-6"
+                    className="text-xl font-bold underline text-gray-900 dark:text-white mb-6"
                 >
                     You might also like
                 </Heading>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6">
                 {recommendedProducts.map((product, index) => (
                     <motion.div
                         key={product.id}

@@ -67,7 +67,7 @@ export default function Banner() {
         <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-500"></div>
       </div>
 
-      <div className="container mx-auto px-4 py-12 relative z-10">
+      <div className="container mx-auto px-4 py-6 relative z-10">
         {/* Main Banner Grid */}
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-8 mb-12">
           {/* Hero Carousel - 3/4 width */}
@@ -87,7 +87,7 @@ export default function Banner() {
                 pagination={{
                   clickable: true,
                   el: ".hero-pagination",
-                  renderBullet: (index, className) => {
+                  renderBullet: (className) => {
                     return `<span class="${className} !w-3 !h-3 !bg-white/80 !mx-1 !rounded-full !transition-all !duration-300 hover:!scale-125"></span>`;
                   },
                 }}
@@ -101,17 +101,17 @@ export default function Banner() {
               >
                 {slides.map((slide) => (
                   <SwiperSlide key={slide.id}>
-                    <div className={`relative min-h-[600px] bg-gradient-to-br ${slide.bgGradient}`}>
+                    <div className={`relative min-h-[850px] lg:min-h-[600px] bg-gradient-to-br ${slide.bgGradient}`}>
                       {/* Content */}
                       <div className="absolute inset-0 z-10 flex items-center">
                         <div className="container mx-auto px-8">
-                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                             {/* Text Content */}
                             <motion.div
                               initial={{ opacity: 0, x: -50 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.8, delay: 0.2 }}
-                              className={`${slide.textColor} space-y-6`}
+                              className={`${slide.textColor} space-y-6 lg:col-span-2 `}
                             >
                               {/* Badge */}
                               <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
@@ -120,17 +120,17 @@ export default function Banner() {
                               </div>
 
                               {/* Title */}
-                              <h1 className="text-5xl lg:text-6xl font-black leading-tight">
+                              <h1 className="text-3xl md:text-4xl lg:text-6xl font-black leading-tight">
                                 {slide.title}
                               </h1>
 
                               {/* Subtitle */}
-                              <p className="text-xl lg:text-2xl font-semibold opacity-90">
+                              <p className="lg:text-xl font-semibold opacity-90">
                                 {slide.subtitle}
                               </p>
 
                               {/* Description */}
-                              <p className="text-lg opacity-80 leading-relaxed max-w-2xl">
+                              <p className="text-sm lg:text-lg opacity-80 leading-relaxed max-w-2xl">
                                 {slide.desc}
                               </p>
 
@@ -138,7 +138,7 @@ export default function Banner() {
                               <motion.button
                                 whileHover={{ scale: 1.05, x: 10 }}
                                 whileTap={{ scale: 0.95 }}
-                                className={`${slide.buttonStyle} px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center gap-3 group`}
+                                className={`${slide.buttonStyle} px-8 py-4 rounded-2xl font-bold text-lg w-full lg:w-auto shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center gap-3 group`}
                               >
                                 Shop Now
                                 <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -150,7 +150,7 @@ export default function Banner() {
                               initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
                               animate={{ opacity: 1, scale: 1, rotate: 0 }}
                               transition={{ duration: 1, delay: 0.5 }}
-                              className="relative h-96 lg:h-[500px]"
+                              className="relative h-96 lg:h-[500px] "
                             >
                               <Image
                                 src={slide.img}
@@ -318,9 +318,9 @@ export default function Banner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-white rounded-3xl shadow-2xl border border-green-100 p-8"
+          className="bg-white rounded-3xl shadow-2xl border border-green-100 p-4 lg:p-8"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-4 gap-2">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -331,11 +331,11 @@ export default function Banner() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="text-center group cursor-pointer"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-400 to-green-500 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 mb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-emerald-400 to-green-500 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 mb-4">
                   <feature.icon className="text-white text-2xl" />
                 </div>
-                <h4 className="font-bold text-gray-900 text-lg mb-1">{feature.text}</h4>
-                <p className="text-gray-600 text-sm">{feature.subtext}</p>
+                <h4 className="font-bold text-gray-900 text-[12px] lg:text-lg mb-1">{feature.text}</h4>
+                <p className="text-gray-600 text-[10px]">{feature.subtext}</p>
               </motion.div>
             ))}
           </div>
