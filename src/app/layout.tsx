@@ -5,13 +5,7 @@ import Providers from "../hooks/Providers";
 import { Toaster } from "react-hot-toast";
 import { CartProvider } from "@/hooks/CartContext";
 import { WishlistProvider } from "@/hooks/WishlistContext";
-
-
-
-// export async function generateMetadata(): Promise<Metadata> {
-//   // For the root layout, we want the default values, so we call without parameters
-//   return generateDynamicMetadata();
-// }
+import { ChatProvider } from "@/hooks/ChatContext";
 
 export default function RootLayout({
   children,
@@ -20,16 +14,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={` antialiased`} suppressHydrationWarning={true}>
+      <body className={`antialiased`} suppressHydrationWarning={true}>
         <Providers>
-          {" "}
           <ThemeProvider
             defaultTheme="light"
             storageKey={`${appConfiguration.appCode}theme`}>
             <CartProvider>
               <WishlistProvider>
-                {children}
+                <ChatProvider>
+                  {children}
+                </ChatProvider>
               </WishlistProvider>
             </CartProvider>
           </ThemeProvider>
@@ -39,4 +33,3 @@ export default function RootLayout({
     </html>
   );
 }
-

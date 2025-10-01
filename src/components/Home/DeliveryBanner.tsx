@@ -5,7 +5,7 @@ import delevaryImage from "../../../public/Delivery-Illustration.jpg"
 
 const DeliveryBanner = () => {
   return (
-  <section className="px-2 md:px-0 mb-4 pb-2 ">
+  <section className="px-2 md:px-0 mt-4">
       <div className="bg-emerald-500 rounded-xl p-4 md:p-6 lg:p-8 shadow-sm container md:mx-auto">
       <div className="bg-white rounded-lg flex flex-col md:flex-row items-center justify-between p-6 md:p-10">
         {/* Left Content */}

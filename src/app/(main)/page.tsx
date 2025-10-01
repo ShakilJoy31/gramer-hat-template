@@ -2,6 +2,7 @@
 import HomeBanner from "@/components/Home/Banner";
 import CategorySection from "@/components/Home/CategorySection";
 import DeliveryBanner from "@/components/Home/DeliveryBanner";
+import HealthyJourney from "@/components/Home/HealthJourney";
 import NewProduct from "@/components/Home/NewProduct";
 import OfferProducts from "@/components/Home/OfferedProducts";
 import TopSoldProducts from "@/components/Home/TopSoldProduct";
@@ -59,6 +60,7 @@ const Home = async ({ searchParams }: HomeProps) => {
         defaultCategory={category}
       />
       <DeliveryBanner></DeliveryBanner>
+      <HealthyJourney></HealthyJourney>
     </div>
   )
 }

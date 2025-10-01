@@ -8,6 +8,7 @@ import { useCart } from "@/hooks/CartContext";
 import Button from "../reusable-components/Button";
 import { useWishlist } from "@/hooks/WishlistContext";
 import Link from "next/link";
+import { useChat } from "@/hooks/ChatContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,6 +16,7 @@ export default function Navbar() {
   const router = useRouter();
   const { totalItems } = useCart();
   const { totalItems: wishlistTotalItem } = useWishlist();
+  const { setIsChatOpen } = useChat();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -162,7 +164,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center justify-between py-1">
             <div className="flex items-center space-x-8">
               {navLinks.map((link, index) => (
-                <a
+                <Link
                   key={index}
                   href={link.href}
                   className={`relative group py-2 text-sm font-medium transition-colors duration-200 ${link.isHighlighted
@@ -177,7 +179,7 @@ export default function Navbar() {
                   {!link.isHighlighted && (
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
                   )}
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -188,8 +190,11 @@ export default function Navbar() {
               <a href="#" className="hover:text-gray-700 transition-colors duration-200">
                 Terms & Conditions
               </a>
-              <div className="flex items-center space-x-1 bg-gray-100 px-3 py-1 rounded-full">
-                <span className="text-green-500">●</span>
+              <div 
+                onClick={() => setIsChatOpen(true)}
+                className="flex items-center hover:cursor-pointer space-x-1 bg-gray-100 px-3 py-1 rounded-full hover:bg-green-50 hover:text-green-600 transition-all duration-200 group"
+              >
+                <span className="text-green-500 group-hover:animate-pulse">●</span>
                 <span>Live Support</span>
               </div>
             </div>
@@ -207,7 +212,7 @@ export default function Navbar() {
               >
                 <div className="py-4 space-y-4">
                   {navLinks.map((link) => (
-                    <a
+                    <Link
                       key={link.name}
                       href={link.href}
                       className={`block py-2 px-4 rounded-lg transition-colors duration-200 ${link.isHighlighted
@@ -218,7 +223,7 @@ export default function Navbar() {
                     >
                       {link.name}
                       {link.hasDropdown && <FiChevronDown className="inline ml-2 text-xs" />}
-                    </a>
+                    </Link>
                   ))}
 
                   <div className="pt-4 border-t border-gray-200 space-y-3">
@@ -228,6 +233,16 @@ export default function Navbar() {
                     <a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors duration-200">
                       Terms & Conditions
                     </a>
+                    <div 
+                      onClick={() => {
+                        setIsChatOpen(true);
+                        setIsMenuOpen(false);
+                      }}
+                      className="flex items-center space-x-1 py-2 px-4 text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-lg transition-colors duration-200 cursor-pointer"
+                    >
+                      <span className="text-green-500">●</span>
+                      <span>Live Support</span>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -235,7 +250,6 @@ export default function Navbar() {
           </AnimatePresence>
         </div>
       </nav>
-
     </header>
   );
 }

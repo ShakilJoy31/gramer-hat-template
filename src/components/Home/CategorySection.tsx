@@ -106,7 +106,7 @@ export default function CategorySection({
   }
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 py-20 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 py-4 overflow-hidden">
       {/* Abstract Organic Background */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-r from-green-200 to-emerald-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -487,13 +487,7 @@ export default function CategorySection({
           className="text-center"
         >
           <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-3xl p-12 shadow-2xl relative overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `radial-gradient(circle at 2px 2px, white 2px, transparent 0)`,
-                backgroundSize: '30px 30px'
-              }}></div>
-            </div>
+            
             
             <Heading className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-4">
               Ready to Taste the Difference?
