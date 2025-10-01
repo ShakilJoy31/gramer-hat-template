@@ -1,30 +1,32 @@
-
 import AboutSection from "@/components/AboutUs/AboutSection";
 import AboutBanner from "@/components/AboutUs/AboutUsBanner";
 import StatsSection from "@/components/AboutUs/StatsSection";
+import TeamSection from "@/components/AboutUs/TeamSection";
+import ValuesSection from "@/components/AboutUs/ValuesSection";
 import { generateDynamicMetadata } from "@/metadata/generateMetadata";
 
 export async function generateMetadata() {
   return generateDynamicMetadata({
-    title: "Premium Online Store | About Us ",
-    description: "Discover amazing products at unbeatable prices. Shop the latest trends in electronics, fashion, home goods and more. Free shipping on orders over $50. Secure checkout guaranteed.",
+    title: "About Us | Premium E-Commerce Experience",
+    description: "Learn about our journey, values, and commitment to delivering exceptional quality products with outstanding customer service. Discover what makes us different.",
     keywords: [
-      "online shopping", "ecommerce store", "buy products online",
-      "electronics", "fashion", "home decor", "premium products",
-      "discounts", "free shipping", "secure checkout", "best deals",
-      "shopping", "online store", "quality products", "affordable prices"
+      "about us", "our story", "company values", "ecommerce mission",
+      "quality products", "customer service", "premium shopping",
+      "trusted brand", "shopping experience", "company team"
     ],
   });
 }
 
-const Home = () => {
+const About = () => {
   return (
-    <div className="bg-[#F4F6F8] dark:bg-gray-600 ">
-        <AboutBanner></AboutBanner>
-        <AboutSection></AboutSection>
-        <StatsSection></StatsSection>
+    <div className="bg-white dark:bg-gray-900">
+      <AboutBanner />
+      <AboutSection />
+      <ValuesSection />
+      <StatsSection />
+      <TeamSection />
     </div>
   )
 }
 
-export default Home;
+export default About;
