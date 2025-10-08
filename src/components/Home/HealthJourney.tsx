@@ -49,7 +49,7 @@ export default function HealthyJourney() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="container mx-auto py-4 "
+            className="container mx-auto p-4 "
         >
 
             <div className="relative bg-gradient-to-r from-emerald-500 to-green-600 rounded-3xl p-4 md:p-6 lg:p-8 xl:p-12 shadow-2xl overflow-hidden">

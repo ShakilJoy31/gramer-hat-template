@@ -33,7 +33,7 @@ export default function BannerMobile() {
           <SwiperSlide key={index}>
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className={`rounded-xl shadow-md p-4 flex items-center justify-between relative h-[120px] bg-gradient-to-br ${slide.bgGradient}`}
+              className={`rounded-xl shadow-md p-4 flex items-center justify-between relative h-[180px] bg-gradient-to-br ${slide.bgGradient}`}
             >
               {/* Left Text */}
               <div className="flex-1 absolute left-4 z-50 ">

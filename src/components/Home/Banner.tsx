@@ -11,7 +11,7 @@ import "swiper/css/effect-fade";
 
 
 import BannerMobile from "./BannerMobile";
-import { homeBannerOffer, slides } from "@/utils/constant/homeBanner";
+import { slides } from "@/utils/constant/homeBanner";
 
 
 export default function Banner() {
@@ -34,7 +34,7 @@ export default function Banner() {
       <div className="container mx-auto px-4 py-6 relative z-10">
         {/* Main Banner Grid */}
 
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-2 md:gap-4 lg:gap-6 mb-4">
+        <div>
           {/* Hero Carousel - 3/4 width */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -149,79 +149,7 @@ export default function Banner() {
           </motion.div>
 
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-4 lg:gap-6"
-          >
-            {homeBannerOffer.map((coupon, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.02, y: -5 }}
-                className={`relative bg-gradient-to-br ${coupon.bg} rounded-2xl p-2 md:p-4 lg:p-6 text-white shadow-2xl overflow-hidden group cursor-pointer`}
-              >
-                <div className="absolute inset-0 opacity-20" style={{
-                  backgroundImage: `radial-gradient(circle at 2px 2px, white 2px, transparent 0)`,
-                  backgroundSize: '20px 20px'
-                }}></div>
-
-                <div className="relative z-10">
-                  <div className="grid md:flex items-start justify-between mb-2 gap-y-2">
-                    <div>
-                      <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold mb-2">
-                        <coupon.icon className="text-yellow-300" />
-                        {coupon.badge}
-                      </div>
-                      <h4 className="text-md md:text-xl font-black mb-1">{coupon.discount}</h4>
-                      <p className="text-amber-100 text-xs md:text-sm">{coupon.desc}</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
-                        <p className="font-black text-md md:text-lg lg:text-xl ">{coupon.code}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid md:flex items-center justify-between gap-y-2">
-                    <span className="text-amber-100 text-sm">Min. spend {coupon.minSpend}</span>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`bg-white ${coupon.btnColor} px-4 py-2 rounded-xl font-bold text-sm shadow-lg hover:shadow-xl transition-all duration-300`}
-                    >
-                      Use Code
-                    </motion.button>
-                  </div>
-                </div>
-
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-              </motion.div>
-            ))}
-
-
-            {/* Stats Card for desktop */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="bg-white rounded-2xl p-6 shadow-2xl border border-green-100 hidden md:block"
-            >
-              <div className="text-center">
-                <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-                  <FaSeedling />
-                  Trusted By
-                </div>
-                <h4 className="text-3xl font-black text-gray-900 mb-2">10K+</h4>
-                <p className="text-gray-600 text-sm">Happy Families</p>
-                <div className="flex justify-center mt-3">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <FaStar key={star} className="text-amber-400 text-sm mx-0.5" />
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+          
         </div>
 
       </div>
