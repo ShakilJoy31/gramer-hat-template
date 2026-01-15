@@ -33,4 +33,4 @@ export const appConfiguration: IConfigurationProps = {
 
 // Production Url........
 // https://gramer-haat.vercel.app
-export const baseUrl = 'https://gramer-haat.vercel.app';
+export const baseUrl = 'https://gramer-haat.vercel.app'; 
